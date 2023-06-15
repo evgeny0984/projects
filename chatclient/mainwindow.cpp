@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {
     labelIP = new QLabel(this);
     labelIP->setText("Адрес");
@@ -64,9 +63,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(timer, SIGNAL(timeout()), this, SLOT(checkingConnection()));
 }
 
-MainWindow::~MainWindow()
-{
-}
+MainWindow::~MainWindow() {}
 
 void MainWindow::clientConnect()
 {
