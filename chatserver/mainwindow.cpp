@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {
     labelIP = new QLabel(this);
     labelIP->setText("IP Адрес");
@@ -72,9 +71,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(timer, SIGNAL(timeout()), this, SLOT(timeCount()));
 }
 
-MainWindow::~MainWindow()
-{
-}
+MainWindow::~MainWindow() {}
 
 void MainWindow::getIP()
 {
@@ -170,7 +167,7 @@ void MainWindow::onSend()
     else
     {
         textEdit->append(line);
-        line = "Server:" + line;
+        line = "Server: " + line;
         QByteArray block;
         QDataStream out(&block, QIODevice::WriteOnly);
         out << (quint16)0;
@@ -254,12 +251,12 @@ void MainWindow::onRead()
             if (it.key() == tcpSocket)
             {
                 name = it.value();
-                textEdit->append(name + ":" + stream);
+                textEdit->append(name + ": " + stream);
                 break;
             }
         }
         key = "message";
-        data = name + ":" + stream;
+        data = name + ": " + stream;
         QByteArray block;
         QDataStream out(&block, QIODevice::WriteOnly);
         out << (quint16)0;
@@ -340,7 +337,7 @@ void MainWindow::setUserList()
         userList << user;
     }
     key = "userlist";
-    data = userList.join(",") + "\n";
+    data = userList.join(",");
     QByteArray block;
     QDataStream out(&block, QIODevice::WriteOnly);
     out << (quint16)0;
